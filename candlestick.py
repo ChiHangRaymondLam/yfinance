@@ -6,7 +6,7 @@
  
 import yfinance as yf 
 import pandas as pd 
-import plotly.graph_objects as pg 
+import plotly.graph_objects as go
 
 
 stock = yf.download('0005.HK', period='1d', interval='1m')
@@ -14,35 +14,35 @@ stock = yf.download('0005.HK', period='1d', interval='1m')
 data = stock.reset_index()
 
 data.columns = ['Current Time', 'Opening Price', 'Highest Price', 'Lowest Price', 'Closing Price', 'Adjusted Closing Price', 'Volume']
-data['Current Time'] = pd.to_datetime(data['Current Time'].dt.strftime('%Y-%m-%d %H:%M'))
+data['Current Time'] = pd.to_datetime(data['Current Time'].dt.strftime('%y-%m-%d %H:%M'))
 data['Volume'] //= 1000
 
-result = pg.Figure()
+result = go.Figure()
 
 # Volume Graph
 result.add_trace(
-    pg.Bar(
+    go.Bar(
         name = 'Volume',
         x = data['Current Time'],
         y = data['Volume'],
         yaxis = 'y2',
-        marker_color = '#99ccff'
+        marker_color = '#0099ff'
     )
 )
 
 # Candlestick Graph
 result.add_trace(
-    pg.Candlestick(
+    go.Candlestick(
         name = '',
         x = data['Current Time'],
         open = data['Opening Price'],
         high = data['Highest Price'],
         low = data['Lowest Price'],
         close = data['Closing Price'],
-        increasing_line_color = '#fd5047',
-        increasing_fillcolor = '#f29696',
-        decreasing_line_color = '#3d9970',
-        decreasing_fillcolor = '#91c2b3'
+        increasing_line_color = '#fa3838',
+        increasing_fillcolor = '#ea0606',
+        decreasing_line_color = '#05e105',
+        decreasing_fillcolor = '#03a003'
     )
 )
 
