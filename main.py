@@ -1,15 +1,20 @@
-import requests
-import pandas as pd
+from datetime import datetime
+import datetime
 import yfinance as yf
 
-# url = 'https://finance.yahoo.com/screener/predefined/most_actives?offset=0&count=100'
-# data = pd.read_html(url)[0]
 
 def yfmain(tickersymbol):
     tickerdata = yf.Ticker(tickersymbol)
     tickerinfo = tickerdata.info
     investment = tickerinfo['shortName']
-    print(investment)
+    print('Investment: ' + investment)
+
+    today = datetime.datetime.today().isoformat()
+    # print('Today = ' + today)
+
+    tickerDF = tickerdata.history(period='1d',start='2022-1-1',end=today[:10])
+    priceLast = tickerDF['Close'].iloc[-1]
+    print(f'{investment} price last = {str(priceLast)}')
 
 
 yfmain('TSLA')
