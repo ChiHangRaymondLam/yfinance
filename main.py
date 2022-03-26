@@ -20,3 +20,7 @@ def yfmain(tickersymbol):
 yfmain('TSLA')
 print('')
 yfmain('VOO')
+print('')
+yfmain('HSBA.L')
+print('')
+yfmain('0700.HK')
