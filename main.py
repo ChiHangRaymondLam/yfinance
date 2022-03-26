@@ -8,6 +8,10 @@ import yfinance as yf
 def yfmain(tickersymbol):
     tickerdata = yf.Ticker(tickersymbol)
     tickerinfo = tickerdata.info
-    print(tickerinfo)
+    investment = tickerinfo['shortName']
+    print(investment)
+
 
 yfmain('TSLA')
+print('')
+yfmain('VOO')
