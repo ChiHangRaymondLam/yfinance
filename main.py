@@ -14,7 +14,10 @@ def yfmain(tickersymbol):
 
     tickerDF = tickerdata.history(period='1d',start='2022-1-1',end=today[:10])
     priceLast = tickerDF['Close'].iloc[-1]
-    print(f'{investment} price last = {str(priceLast)}')
+    priceVest = tickerDF['Close'].iloc[-2]
+    change = priceLast - priceVest
+    print(f'{investment} price last = {priceLast}')
+    print(f'Price change = {change}')
 
 
 yfmain('TSLA')
