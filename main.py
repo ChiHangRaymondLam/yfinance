@@ -2,6 +2,8 @@ from datetime import datetime
 import datetime
 import yfinance as yf
 
+# The 100 most active stocks in New Zealand
+# url = 'https://nz.finance.yahoo.com/most-active?offset=0&count=100'
 
 def yfmain(tickersymbol):
     tickerdata = yf.Ticker(tickersymbol)
@@ -18,7 +20,7 @@ def yfmain(tickersymbol):
     print(f'{investment} price last = {priceLast}')
     print(f'Price change = {change}')
 
-# Ticker symbol example: 'TSLA', 'AMZN', '0005.HK', '0700.HK'
+# Ticker symbol example: 'TSLA', 'AMZN', 'AAPL', '0005.HK', '0700.HK'
 print('This application helps you to check the latest prices and spreads of stocks.')
 symbol = input('Input the ticker symbol: ')
 
