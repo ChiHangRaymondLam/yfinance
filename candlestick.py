@@ -17,10 +17,12 @@ data.columns = ['Current Time', 'Opening Price', 'Highest Price', 'Lowest Price'
 data['Current Time'] = pd.to_datetime(data['Current Time'].dt.strftime('%y-%m-%d %H:%M'))
 data['Volume'] //= 1000
 
-result = go.Figure()
+# data['20wma'] = data['Closing Price'].rolling(window=140).mean()
+
+fig = go.Figure()
 
 # Volume Graph
-result.add_trace(
+fig.add_trace(
     go.Bar(
         name = 'Volume',
         x = data['Current Time'],
@@ -31,7 +33,7 @@ result.add_trace(
 )
 
 # Candlestick Graph
-result.add_trace(
+fig.add_trace(
     go.Candlestick(
         name = '',
         x = data['Current Time'],
@@ -46,7 +48,17 @@ result.add_trace(
     )
 )
 
-result.update_layout(
+# fig.add_trace(
+#     go.Scatter(
+#         x = data['Current Time'],
+#         y = data['20wma'],
+#         line = dict(color = '#e0e0e0'),
+#         name = '20-week MA'
+#     )
+# )
+
+
+fig.update_layout(
     title = '0005 HSBC',
     hovermode = 'x unified', # Showing information when the mouse hover on the graph
 
@@ -64,4 +76,4 @@ result.update_layout(
     )
 )
 
-result.show()
+fig.show()
