@@ -20,8 +20,10 @@ def yfmain(tickersymbol):
     print(f'{investment} price last = {priceLast}')
     print(f'Price change = {change}')
 
-# Ticker symbol example: 'TSLA', 'AMZN', 'AAPL', '0005.HK', '0700.HK'
-print('This application helps you to check the latest prices and spreads of stocks.')
-symbol = input('Input the ticker symbol: ')
 
-yfmain(symbol)
+if __name__ == '__main__':
+    # Ticker symbol example: 'TSLA', 'AMZN', 'AAPL', '0005.HK', '0700.HK'
+    print('This application helps you to check the latest prices and spreads of stocks.')
+    symbol = input('Input the ticker symbol: ')
+
+    yfmain(symbol)
